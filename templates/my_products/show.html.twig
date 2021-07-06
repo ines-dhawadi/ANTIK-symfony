@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+   
+
+   {# ******************** start card ******************* #}
+            <div class="card" style="width: 18rem;">
+  <img src={{ product.image }}  class="imgshow" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.description }}.</p>
+    <p class="card-text">{{ product.prix }}.</p>
+ 
+    <a href="{{ path('my_products_show', {'id': product.id}) }}" class="btn btn-danger">show</a>
+                    <a href="{{ path('my_products_edit', {'id': product.id}) }}" class="btn btn-warning"  >edit</a>
+  </div>
+</div>
+{# *********************** end card ************************* #}
+
+    <a href="{{ path('my_products_index') }}" class="btn btn-warning bntbacktolist"   >back to list</a>
+
+    <a href="{{ path('my_products_edit', {'id': product.id}) }}" class="btn btn-danger">edit</a>
+<div class="btn-light  bntdelete">
+    {{ include('my_products/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

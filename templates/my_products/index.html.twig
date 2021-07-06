@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Products{% endblock %}
+
+{% block body %}
+{# ********************  START NAVBAR ************* #}
+
+
+{# ********************  END NAVBAR ******************** #}
+
+
+
+
+    <h1>Products index</h1>
+        <a href="{{ path('my_products_new') }}" class="btn btn-danger bnt-ajout">Create new</a>
+
+    <table class="table">
+        <thead class="thead">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>  <img src={{ product.image }} class="img1" /></td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.prix }}</td>
+                <td>
+                    <a href="{{ path('my_products_show', {'id': product.id}) }}" class="btn btn-danger" >show</a>
+                    <a href="{{ path('my_products_edit', {'id': product.id}) }}"  class="btn btn-warning"     >edit</a>
+                </td>
+            </tr>
+
+
+
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
